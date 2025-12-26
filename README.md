@@ -86,7 +86,7 @@ var  handle = dlopen(soPathPtr, 2);
 ### spwan注入方法 感谢D_Z66666大佬帮忙共同完成
 
 这个脚本是trace某宝的
-
+> 如果不需要打印内存 把        var res =vmtrace(targetFuncAddr, argsPtr,argNum,argPtr1,1); 最后一个1 改成0
 ```javascript
 function prepareArgs(args) {
     if (args === undefined || !Array.isArray(args)) {
@@ -149,7 +149,7 @@ function hook_sub_1329B0() {
         var args =[arg0,arg1,arg2,arg3,arg4,arg5];
         var {argsPtr, argNum} = prepareArgs(args);
         var argPtr1 = Memory.allocUtf8String("/data/user/0/com.taobao.taobao/log.txt");
-        var res =vmtrace(targetFuncAddr, argsPtr,argNum,argPtr1,0);
+        var res =vmtrace(targetFuncAddr, argsPtr,argNum,argPtr1,1);
         console.log(res)
         return res;
     }, 'pointer', ['pointer','pointer','pointer','pointer','pointer','pointer']));
